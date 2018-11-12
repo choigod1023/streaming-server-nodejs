@@ -5,7 +5,7 @@ const app = express()
 const fs = require('fs');
 const config = require('./config/config.json')
 const vidStreamer = require('vid-streamer')
-app.use('/videos', vidStreamer.settings(config.videos))
+app.use('/public/videos', vidStreamer.settings(config.videos))
 app.use(express.static('public'));
 app.use(express.static('views'));
 app.set('view engine', 'ejs');
@@ -27,8 +27,13 @@ app.get('/', function (req, res) {
     })
 }
 )
-
-app.listen(3000, function () {
+app.get('/videos/:asdf',function(req,res){
+    var videos = req.params.asdf
+    res.render('video',{
+        title:videos
+    })
+})
+app.listen(3030, function () {
     console.log('hi');
 })
 
