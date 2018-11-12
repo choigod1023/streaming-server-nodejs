@@ -120,27 +120,6 @@ section{
     background-color: none;
 }
 
-section>a{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    position: relative;
-
-    transition: 0.4s;
-
-    width: 30%;
-    height: 360px;
-
-    margin: 12px;
-
-    box-sizing: border-box;
-    border: 2px solid #A6A5A1;
-    border-radius: 20px;
-    box-shadow: 3px 3px 5px #A6A5A1;
-
-    overflow: hidden;
-}
 section>a>img{
     height: 120%;
 

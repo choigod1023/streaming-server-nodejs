@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="shortcut icon" href="/fc.png">
+    <link href="https://fonts.googleapis.com/css?family=Do+Hyeon" rel="stylesheet">
+    <link rel="stylesheet" href="../../sd.css" type="text/css">
+    <meta charset="UTF-8">
+    <title>IZ*ONE STREAMING</title>
+</head>
+
+<body>
+    <header>
+        <a href="/">
+            <div id="logo">
+                <img src="../../IZONE_logo.png" alt="logo" style="width:267px;padding-left:2.438em;">
+            </div>
+        </a>
+        <div id="search">
+            <input type="search" id="searchInput">
+            <input type="button" id="searchButton" value="검색">
+        </div>
+    </header>
+    <nav>
+        <span>
+            <a href="/showcon">쇼케이스</a>
+        </span>|
+        <span>
+            <a href="/onechu">아이즈원 츄</a>
+        </span>|
+        <span>
+            <a href="/vlive">V LIVE</a>
+        </span>|
+    </nav>
+        <%for(var i in hd){%>
+            <h1><a href="/videos/<%=hd[i]%>" style="display:block;text-align:center;font-size:5rem;"><%=hd[i]%>_hd</a></h1>
+        <%}%>
+        <%for(var i in hd){ %>
+            <h1><a href="/videos/sdquality/<%=sd[i]%>"style="display:block;text-align:center;font-size:5rem;"><%=sd[i]%>_sd</a></h1>
+        <%}%>
+</body>
+
+</html>
