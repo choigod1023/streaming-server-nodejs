@@ -12,6 +12,8 @@
     "ejs": "^2.6.1",
     "express": "^4.16.4",
     "fs": "0.0.1-security",
+    "iconv-lite": "^0.4.24",
+    "jschardet": "^1.6.0",
     "vid-streamer": "^1.0.0"
   }
 }

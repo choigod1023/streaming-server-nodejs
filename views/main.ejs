@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <link rel="shortcut icon" href="/fc.png">
     <link href="https://fonts.googleapis.com/css?family=Do+Hyeon" rel="stylesheet">
     <link rel="stylesheet" href="./main.css">
     <link rel="stylesheet" href="../index_mobile.css">
-    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+        <meta charset="UTF-8">
     <title>IZ*ONE STREAMING</title>
 </head>
+
 <body>
     <header>
         <a href="/">
@@ -30,18 +33,24 @@
         <span>
             <a href="/vlive">V LIVE</a>
         </span>|
+        <span>
+            <a href="/other">기타</a>
+        </span>|
     </nav>
     <section>
         <% for(var i in list){ %>
-        <a href="/videos/<%=list[i]%>">
-            <img src="<%= list[i] %>/img.jpg" alt="">
-            <span><%= list[i] %></span>
-        </a>
-        <% } %>
+            <a href="/videos?src=<%=list[i]%>">
+                <img src="<%= list[i] %>/img.jpg" alt="">
+                <span>
+                    <%= list[i] %>
+                </span>
+            </a>
+            <% } %>
     </section>
     <aside>
         <h1>공지사항</h1>
         <p>ㄴㄷㅆ</p>
     </aside>
 </body>
+
 </html>

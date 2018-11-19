@@ -5,6 +5,7 @@
     <link rel="shortcut icon" href="/fc.png">
     <link href="https://fonts.googleapis.com/css?family=Do+Hyeon" rel="stylesheet">
     <link rel="stylesheet" href="../video.css">
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     <meta charset="UTF-8">
     <title>IZ*ONE STREAMING</title>
 </head>
@@ -31,10 +32,15 @@
         <span>
             <a href="/vlive">V LIVE</a>
         </span>|
+        <span>
+            <a href="/other">기타</a>
+        </span>|
     </nav>
     <section style="width:1280px;height:768px;">
-        <video style="width:1280px;height:768px;" src="/public/videos/hd/<%=title%>" controls></video>
-        <h1 style = "font-size:2rem"><a href="/videos/sdquality/<%=title%>">SD quality</a></h1>
+        <video style="width:1280px;height:768px;" src="../public/videos/hd/<%=title%>" controls></video>
+        <h1 style="font-size:2rem">
+            <a href="/videos/sdquality/<%=title%>">SD quality</a>
+        </h1>
     </section>
 </body>
 
