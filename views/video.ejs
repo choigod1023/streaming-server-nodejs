@@ -4,7 +4,7 @@
 <head>
     <link rel="shortcut icon" href="/fc.png">
     <link href="https://fonts.googleapis.com/css?family=Do+Hyeon" rel="stylesheet">
-    <link rel="stylesheet" href="../video.css">
+    <link rel="stylesheet" href="../video.css"><link rel="stylesheet" href="./index_mobile.css">
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     <meta charset="UTF-8">
     <title>IZ*ONE STREAMING</title>
@@ -17,10 +17,10 @@
                 <img src="../IZONE_logo.png" alt="logo" style="width:267px;padding-left:2.438em;">
             </div>
         </a>
-        <div id="search">
-            <input type="search" id="searchInput">
-            <input type="button" id="searchButton" value="검색">
-        </div>
+        <form action = "/search" method="post" id="search">
+            <input type="textarea" name="searchInput" id="searchInput">
+            <input type="submit" id="searchButton" value="검색">
+        </form>
     </header>
     <nav>
         <span>
@@ -33,13 +33,16 @@
             <a href="/vlive">V LIVE</a>
         </span>|
         <span>
+            <a href="/cam">직캠</a>
+        </span>|
+        <span>
             <a href="/other">기타</a>
         </span>|
     </nav>
     <section style="width:1280px;height:768px;">
         <video style="width:1280px;height:768px;" src="../public/videos/hd/<%=title%>" controls></video>
         <h1 style="font-size:2rem">
-            <a href="/videos/sdquality/<%=title%>">SD quality</a>
+            <a href="/videos/<%=another%>">동영상 재생이 안될때</a>
         </h1>
     </section>
 </body>

@@ -1,0 +1,202 @@
+:root{
+    --search-color: #E80C7A;
+    --main-color: #E80C7A;
+}
+
+body{
+    position: relative;
+    
+    margin: 0 auto;
+
+    font-family: 'Do Hyeon', sans-serif;
+    width: 1280px;
+}
+
+header{
+    position: relative;
+    display: flex;
+    align-items: center;
+
+    width: 100%;
+    height: 200px;
+}
+#logo{
+    width: 350px;
+    height: 120px;
+}
+#logo>img{
+    width: 100%;
+}
+#search{
+    display: flex;
+    align-items: center;
+
+    position: absolute;
+    right: 0;
+    bottom: 30px;
+
+    width: 900px;
+    height: 100px;
+}
+#searchInput{
+    width: 60%;
+
+    padding: 10px;
+    margin: 0;
+
+    border: 10px solid var(--search-color);
+    border-radius: 10px;
+
+    font-size: 1.5em;
+}
+#searchButton{
+    width: 20%;
+
+    padding: 4px;
+    margin: 0;
+    margin-left: 10px;
+
+    border: 10px solid var(--search-color);
+    border-radius: 10px;
+    background-color: var(--search-color);
+
+    color: white;
+    font-family: 'Do Hyeon', sans-serif;
+    font-size: 2em;
+}
+
+nav{
+    display: flex;
+    align-items: center;
+
+    width: 100%;
+    height: 60px;
+
+    padding-left: 10px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+    border-radius: 10px;
+
+    color: white;
+    font-size: 2em;
+
+    background-color: var(--main-color);
+}
+nav>span{
+    cursor: pointer;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    transition: 0.4s;
+
+    height: 60%;
+    padding: 0 30px;
+
+    border-radius: 15px;
+    color: white;
+    font-weight: 700;
+    font-size: 0.8em;
+}
+nav>span>a{
+    text-decoration: none;
+    color: white;
+}
+
+section{
+    display: flex;
+    justify-content: center;
+    align-content: flex-start;
+    flex-wrap: wrap;
+
+    position: absolute;
+
+    padding-top: 8px;
+
+    width: 69%;
+    height: 1000px;
+
+    background-color: none;
+}
+
+section>a>img{
+    height: 120%;
+
+    transition: 0.4s;
+
+    opacity: 0.5;
+}
+section>a:hover img{
+    height: 110%;
+
+    opacity: 0.8;
+}
+section>a>span{
+    position: absolute;
+    
+    padding: 10px;
+
+    text-align: center;
+    font-size: 2.2em;
+    word-break: keep-all;
+    text-shadow: 0px 0px 5px black;
+    color: white;
+
+    transition: 0.4s;
+}
+section>a:hover span{
+    font-size: 2.3em;
+}
+
+aside{
+    position: absolute;
+    right: 0;
+
+    width: 30%;
+    padding-bottom: 30px;
+    
+    border-radius: 20px;
+    background-color: #F1ECE9;
+}
+aside>h1{
+    width: 100%;
+
+    text-align: center;
+    font-size: 2em;
+}
+aside>p{
+    margin: 10px 0px 0px 20px;
+
+    font-size: 1.2em;
+}
+
+
+
+section#aniList{
+    flex-wrap: wrap;
+
+    width: 100%;
+}
+section#aniList>h1{
+    font-size: 3em;
+}
+section#aniList>div.imgBox{
+    display:flex;
+    justify-content: center;
+
+    width: 100%;
+    height: 600px;
+}
+section#aniList>div.imgBox>img{
+    height: 100%;
+}
+section#aniList>div.imgBox>video{
+    height: 100%;
+}
+
+ul{
+    list-style: none;
+
+    font-size: 1.8em;
+}
