@@ -43,28 +43,28 @@
         <h1 style="text-align:center;">(아이즈원 직캠들입니다.)</h1><br>
         
         <%for(var i in idarray){%>
-        <%if(idarray[i]==161){%>
-            <h1><a href="/videos/(CAM)<%=idarray[i]%>.webm" style="display:block;text-align:center;font-size:3rem;"><%=stringarray[i]%></a></h1><br>
-            <%}%>
-        <%if(idarray[i]>=162){%>
+            <%if(ext[i]==1){%>
             <h1><a href="/videos/(CAM)<%=idarray[i]%>.mp4" style="display:block;text-align:center;font-size:3rem;"><%=stringarray[i]%></a></h1><br>
             <%}%>
-        <%if(idarray[i]<161){%>    
-        <h1><a href="/videos/(CAM)<%=idarray[i]%>.mkv" style="display:block;text-align:center;font-size:3rem;"><%=stringarray[i]%></a></h1><br>
+        <%if(ext[i]==2){%>
+            <h1><a href="/videos/(CAM)<%=idarray[i]%>.mkv" style="display:block;text-align:center;font-size:3rem;"><%=stringarray[i]%></a></h1><br>
+            <%}%>
+        <%if(ext[i]==3){%>    
+        <h1><a href="/videos/(CAM)<%=idarray[i]%>.webm" style="display:block;text-align:center;font-size:3rem;"><%=stringarray[i]%></a></h1><br>
         <%}%>
         <%}%>
     <%}%>
     <%if(!check){%>
         <h1 style="text-align:center;">(맨 밑부터 가장 오래된 순입니다.)</h1><br>
         <%for(var i in idarray){%>
-            <%if(idarray[i] == 93){%>
-                <h1><a href="/videos/(VLIVE) (1080P) <%=idarray[i]%>.mp4" style="display:block;text-align:center;font-size:3rem;"><%=stringarray[i]%></a></h1><br>
-            <%}%>
-            <%if(idarray[i] > 96){%>
-                <h1><a href="/videos/(VLIVE) (1080P) <%=idarray[i]%>.mp4" style="display:block;text-align:center;font-size:3rem;"><%=stringarray[i]%></a></h1><br>
-            <%}%>
-            <%if(idarray[i]<93 || idarray[i] == 96){%>
+            <%if(quality[i]==1){%>
                 <h1><a href="/videos/(VLIVE) (720P) <%=idarray[i]%>.mp4" style="display:block;text-align:center;font-size:3rem;"><%=stringarray[i]%></a></h1><br>
+            <%}%>
+            <%if(quality[i]==2){%>
+                <h1><a href="/videos/(VLIVE) (1080P) <%=idarray[i]%>.mp4" style="display:block;text-align:center;font-size:3rem;"><%=stringarray[i]%></a></h1><br>
+            <%}%>
+            <%if(quality[i]==3){%>
+                <h1><a href="/videos/(VLIVE) (360P) <%=idarray[i]%>.mp4" style="display:block;text-align:center;font-size:3rem;"><%=stringarray[i]%></a></h1><br>
             <%}%>
         <%}%>
     <%}%>

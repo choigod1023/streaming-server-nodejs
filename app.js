@@ -2,6 +2,8 @@ const express = require('express')
 var mysql = require('mysql');
 const app = express()
 const fs = require('fs');
+var request = require("request");
+
 const config = require('./config/config.json')
 const vidStreamer = require('vid-streamer')
 var bodyParser = require('body-parser')
@@ -53,25 +55,24 @@ app.get('/', function (req, res) {
     })
 })
 
-app.get('/live',function(req,res){
-    fs.readFile('./url.txt','utf-8',function(err,files){
+app.get('/live', function (req, res) {
+    fs.readFile('/home/choigod1023/izone/url.txt', 'utf-8', function (err, files) {
         console.log(files);
-        res.render('live',{url : files});
+        res.render('live', { url: files });
     })
 })
 app.get('/videos/:asdf', function (req, res) {
-    var dddd =req.params.asdf;
+    var dddd = req.params.asdf;
     var i = dddd.indexOf("(CAM)");
-    if(i != -1)
-    {
-        dddd =dddd.replace(".mp4",".mkv");
+    if (i != -1) {
+        dddd = dddd.replace(".mp4", ".mkv");
     }
     else
-        dddd =dddd.replace("(1080P)","(720P)");
+        dddd = dddd.replace("(1080P)", "(720P)");
     console.log(dddd);
     res.render('video', {
         title: req.params.asdf,
-        another:dddd
+        another: dddd
     })
 })
 
@@ -138,16 +139,16 @@ app.post('/search', function (req, res) {
                 vlivearr.push(rows[i].NAME);
             }
             res.render('formsearch', {
-                ischeck,ischeck,
+                ischeck, ischeck,
                 searchstr: search,
-                vliveid:vliveid,
-                vlivearr:vlivearr,
-                camid:camid,
-                camarr:camarr
+                vliveid: vliveid,
+                vlivearr: vlivearr,
+                camid: camid,
+                camarr: camarr
             })
         })
     })
-    
+
 })
 
 app.get('/onechu', function (req, res) {
@@ -174,44 +175,65 @@ app.get('/videos/sdquality/:asdf', function (req, res) {
     })
 })
 var stringarray = [];
-    var string = "";
-    var id = [];
-app.get('/cam',function(req,res){
-    
-    var check = 1;
-    connection.query('SELECT * FROM youtube ORDER BY ID DESC;', function (err, rows) {
-        if (err) throw err;
-        for (var i in rows) {
-            id[i] = rows[i].ID;
-            stringarray[i] = rows[i].NAME;
+var ext = []
+var api;
+var string = "";
+var id = [];
+app.get('/cam', function (req, res) {
+    request("http://kentastudio.com:3030/api/youtube", function (err, status, body) {
+        for(var i in JSON.parse(body)){
+            if(JSON.parse(body)[i].ext.match('mp4')){
+                ext.push(1)
+            }if(JSON.parse(body)[i].ext.match('mkv')){
+                ext.push(2)
+            }if(JSON.parse(body)[i].ext.match('webm')){
+                ext.push(3)
+            }
         }
-        res.render('vlive', {
-            idarray: id,
-            stringarray: stringarray,
-            check:check
+        console.log(ext)
+        var check = 1;
+        connection.query('SELECT * FROM youtube ORDER BY ID DESC;', function (err, rows) {
+            if (err) throw err;
+            for (var i in rows) {
+                id[i] = rows[i].ID;
+                stringarray[i] = rows[i].NAME;
+            }
+            res.render('vlive', {
+                idarray: id,
+                stringarray: stringarray,
+                check: check,
+                ext : ext
+            })
         })
     })
 })
 
 app.get('/vlive', function (req, res) {
-    
+
     var check = 0;
+    var quality = [];
     connection.query('SELECT * FROM vlive ORDER BY ID DESC;', function (err, rows) {
         if (err) throw err;
         for (var i in rows) {
             id[i] = rows[i].ID;
             stringarray[i] = rows[i].NAME;
-        }for(var i in id)
-        {
-            if(id[i]==93)
-            {
-                console.log(i);
+        }
+        for (var i in stringarray) {
+            if (stringarray[i].match('720P')) {
+                quality.push(1)
+            }
+            else if (stringarray[i].match('1080P')) {
+                quality.push(2)
+            }
+            else if (stringarray[i].match('360P')) {
+                quality.push(3)
             }
         }
         res.render('vlive', {
             idarray: id,
             stringarray: stringarray,
-            check : check
+            check: check,
+            quality: quality
         })
     })
 })
