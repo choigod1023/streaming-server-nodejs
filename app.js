@@ -180,30 +180,26 @@ var api;
 var string = "";
 var id = [];
 app.get('/cam', function (req, res) {
+    var youtubestring = []
+    var youtubeid = []
     request("http://kentastudio.com:3030/api/youtube", function (err, status, body) {
-        for(var i in JSON.parse(body)){
-            if(JSON.parse(body)[i].ext.match('mp4')){
-                ext.push(1)
-            }if(JSON.parse(body)[i].ext.match('mkv')){
-                ext.push(2)
-            }if(JSON.parse(body)[i].ext.match('webm')){
-                ext.push(3)
+        for (var i in JSON.parse(body)) {
+            youtubeid[i] = (JSON.parse(body)[i].ID)
+            youtubestring[i] = (JSON.parse(body)[i].NAME)
+            if (JSON.parse(body)[i].ext.match('mp4')) {
+                ext[i] = 1
+            } if (JSON.parse(body)[i].ext.match('mkv')) {
+                ext[i] = 2
+            } if (JSON.parse(body)[i].ext.match('webm')) {
+                ext[i] = 3
             }
         }
-        console.log(ext)
         var check = 1;
-        connection.query('SELECT * FROM youtube ORDER BY ID DESC;', function (err, rows) {
-            if (err) throw err;
-            for (var i in rows) {
-                id[i] = rows[i].ID;
-                stringarray[i] = rows[i].NAME;
-            }
-            res.render('vlive', {
-                idarray: id,
-                stringarray: stringarray,
-                check: check,
-                ext : ext
-            })
+        res.render('vlive', {
+            idarray: youtubeid,
+            stringarray: youtubestring,
+            check: check,
+            ext: ext
         })
     })
 })
@@ -212,29 +208,29 @@ app.get('/vlive', function (req, res) {
 
     var check = 0;
     var quality = [];
-    connection.query('SELECT * FROM vlive ORDER BY ID DESC;', function (err, rows) {
-        if (err) throw err;
-        for (var i in rows) {
-            id[i] = rows[i].ID;
-            stringarray[i] = rows[i].NAME;
+    request("http://kentastudio.com:3030/api/vlive", function (err, status, body) {
+        for (var i in JSON.parse(body)) {
+            id[i] = JSON.parse(body)[i].ID;
+            stringarray[i] = JSON.parse(body)[i].NAME;
         }
-        for (var i in stringarray) {
-            if (stringarray[i].match('720P')) {
-                quality.push(1)
-            }
-            else if (stringarray[i].match('1080P')) {
-                quality.push(2)
-            }
-            else if (stringarray[i].match('360P')) {
-                quality.push(3)
-            }
+    })
+
+    for (var i in stringarray) {
+        if (stringarray[i].match('720P')) {
+            quality.push(1)
         }
-        res.render('vlive', {
-            idarray: id,
-            stringarray: stringarray,
-            check: check,
-            quality: quality
-        })
+        else if (stringarray[i].match('1080P')) {
+            quality.push(2)
+        }
+        else if (stringarray[i].match('360P')) {
+            quality.push(3)
+        }
+    }
+    res.render('vlive', {
+        idarray: id,
+        stringarray: stringarray,
+        check: check,
+        quality: quality
     })
 })
 
